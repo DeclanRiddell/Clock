@@ -1,0 +1,42 @@
+VIRTUAL DIGITAL CLOCK : AM/PM
+
+
+What You Should Do Before You Start:
+
+1) Figure out how to handle offsets.  (This goes in the model.)
+
+2) Figure out am/pm.  Midnight is "12:00:00 am"; do not set the hour
+   to "00".  At noon, it should go from "11:59:59 am" to "12:00:00 pm".
+   (This goes in the view.)
+
+
+
+What Remains To Be Done To The Code:
+
+3) Put the offset code in your program and test it.  If you put in
+   "-o 3600", it should be one hour ahead, and if you put in -3600,
+   it should be one hour behind.
+
+   The "stm.py" program computes the seconds to midnight (or noon),
+   so you can use it by doing something like this:
+
+       ./clock -o $( ./stm.py -o -3 )
+
+   and it should go to 23:59:57, and you can watch it count over to
+   00:00:00.  Similarly, you can do:
+
+       ./clock -o $( ./stm.py -no -3 )
+
+   which should make it to 11:59:57, and you can watch it count over
+   to 12:00:00.
+
+
+4) Code your AM/PM logic and make sure it's right with the same
+   tests mentioned above.
+
+   Note that in 24-hour mode, one minute before 10am should look
+   like this: "09:59:00 24", with a leading "0".  But in AM/PM mode,
+   it should look like this: " 9:59:00 am", without the leading zero
+   on the hour.
+
+

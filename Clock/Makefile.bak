@@ -1,0 +1,196 @@
+# Makefile for the clock project
+#
+# Darren Provine, 17 July 2009
+
+PROGRAM = clock
+SOURCES = clock.c model.c view.c
+OBJECTS = clock.o model.o view.o
+DRIVERS = LEDisplay.o
+INCLUDE = -I/usr/lib/gcc/x86_64-redhat-linux/3.4.6/include
+LIBRARY = -lncurses
+CFLAGS  = -O -Wall
+COMPILER= gcc
+
+.SUFFIXES:
+.SUFFIXES: .c .o
+
+.c.o: ; $(COMPILER) $(CFLAGS) -c $< $(INCLUDE)
+
+$(PROGRAM) : $(OBJECTS)
+	$(COMPILER) -o $(PROGRAM) $(CFLAGS) $(OBJECTS) $(DRIVERS) $(LIBRARY)
+
+clean: ; /bin/rm -f $(PROGRAM) $(OBJECTS) core
+
+depend: $(SOURCES)
+	@ echo
+	@ echo "NOTE: Ignore message about byteswap.h"
+	@ echo
+	makedepend $(INCLUDE) $(SOURCES)
+
+
+# DO NOT DELETE
+
+clock.o: clock.h /usr/include/sys/time.h /usr/include/features.h
+clock.o: /usr/include/stdc-predef.h /usr/include/sys/cdefs.h
+clock.o: /usr/include/bits/wordsize.h /usr/include/bits/long-double.h
+clock.o: /usr/include/gnu/stubs.h /usr/include/bits/types.h
+clock.o: /usr/include/bits/typesizes.h /usr/include/bits/types/time_t.h
+clock.o: /usr/include/bits/types/struct_timeval.h /usr/include/sys/select.h
+clock.o: /usr/include/bits/select.h /usr/include/bits/types/sigset_t.h
+clock.o: /usr/include/bits/types/__sigset_t.h
+clock.o: /usr/include/bits/types/struct_timespec.h /usr/include/time.h
+clock.o: /usr/lib/gcc/x86_64-redhat-linux/3.4.6/include/stddef.h
+clock.o: /usr/include/bits/time.h /usr/include/bits/types/clock_t.h
+clock.o: /usr/include/bits/types/struct_tm.h
+clock.o: /usr/include/bits/types/clockid_t.h
+clock.o: /usr/include/bits/types/timer_t.h
+clock.o: /usr/include/bits/types/struct_itimerspec.h
+clock.o: /usr/include/bits/types/locale_t.h
+clock.o: /usr/include/bits/types/__locale_t.h /usr/include/stdio.h
+clock.o: /usr/include/bits/libc-header-start.h
+clock.o: /usr/include/bits/types/__FILE.h /usr/include/bits/types/FILE.h
+clock.o: /usr/include/libio.h /usr/include/_G_config.h
+clock.o: /usr/include/bits/types/__mbstate_t.h
+clock.o: /usr/lib/gcc/x86_64-redhat-linux/3.4.6/include/stdarg.h
+clock.o: /usr/include/bits/stdio_lim.h /usr/include/bits/sys_errlist.h
+clock.o: /usr/include/unistd.h /usr/include/bits/posix_opt.h
+clock.o: /usr/include/bits/environments.h /usr/include/bits/confname.h
+clock.o: /usr/include/bits/getopt_posix.h /usr/include/bits/getopt_core.h
+clock.o: /usr/include/signal.h /usr/include/bits/signum.h
+clock.o: /usr/include/bits/signum-generic.h
+clock.o: /usr/include/bits/types/sig_atomic_t.h
+clock.o: /usr/include/bits/types/siginfo_t.h
+clock.o: /usr/include/bits/types/sigval_t.h /usr/include/bits/siginfo-arch.h
+clock.o: /usr/include/bits/siginfo-consts.h
+clock.o: /usr/include/bits/types/sigevent_t.h
+clock.o: /usr/include/bits/sigevent-consts.h /usr/include/bits/sigaction.h
+clock.o: /usr/include/bits/sigcontext.h /usr/include/bits/types/stack_t.h
+clock.o: /usr/include/sys/ucontext.h /usr/include/bits/sigstack.h
+clock.o: /usr/include/bits/ss_flags.h
+clock.o: /usr/include/bits/types/struct_sigstack.h
+clock.o: /usr/include/bits/pthreadtypes.h
+clock.o: /usr/include/bits/thread-shared-types.h
+clock.o: /usr/include/bits/pthreadtypes-arch.h /usr/include/bits/sigthread.h
+clock.o: /usr/include/stdlib.h /usr/include/bits/waitflags.h
+clock.o: /usr/include/bits/waitstatus.h /usr/include/bits/floatn.h
+clock.o: /usr/include/sys/types.h /usr/include/bits/stdint-intn.h
+clock.o: /usr/include/endian.h /usr/include/bits/endian.h
+clock.o: /usr/include/bits/byteswap.h /usr/include/bits/byteswap-16.h
+clock.o: /usr/include/bits/uintn-identity.h /usr/include/sys/sysmacros.h
+clock.o: /usr/include/bits/sysmacros.h /usr/include/alloca.h
+clock.o: /usr/include/bits/stdlib-float.h LEDisplay.h /usr/include/strings.h
+clock.o: /usr/include/ctype.h /usr/include/ncurses.h
+clock.o: /usr/include/ncurses_dll.h /usr/include/stdint.h
+clock.o: /usr/include/bits/wchar.h /usr/include/bits/stdint-uintn.h
+clock.o: /usr/include/unctrl.h /usr/include/curses.h /usr/include/term.h
+clock.o: /usr/include/termios.h /usr/include/bits/termios.h
+clock.o: /usr/include/sys/ttydefaults.h
+model.o: clock.h /usr/include/sys/time.h /usr/include/features.h
+model.o: /usr/include/stdc-predef.h /usr/include/sys/cdefs.h
+model.o: /usr/include/bits/wordsize.h /usr/include/bits/long-double.h
+model.o: /usr/include/gnu/stubs.h /usr/include/bits/types.h
+model.o: /usr/include/bits/typesizes.h /usr/include/bits/types/time_t.h
+model.o: /usr/include/bits/types/struct_timeval.h /usr/include/sys/select.h
+model.o: /usr/include/bits/select.h /usr/include/bits/types/sigset_t.h
+model.o: /usr/include/bits/types/__sigset_t.h
+model.o: /usr/include/bits/types/struct_timespec.h /usr/include/time.h
+model.o: /usr/lib/gcc/x86_64-redhat-linux/3.4.6/include/stddef.h
+model.o: /usr/include/bits/time.h /usr/include/bits/types/clock_t.h
+model.o: /usr/include/bits/types/struct_tm.h
+model.o: /usr/include/bits/types/clockid_t.h
+model.o: /usr/include/bits/types/timer_t.h
+model.o: /usr/include/bits/types/struct_itimerspec.h
+model.o: /usr/include/bits/types/locale_t.h
+model.o: /usr/include/bits/types/__locale_t.h /usr/include/stdio.h
+model.o: /usr/include/bits/libc-header-start.h
+model.o: /usr/include/bits/types/__FILE.h /usr/include/bits/types/FILE.h
+model.o: /usr/include/libio.h /usr/include/_G_config.h
+model.o: /usr/include/bits/types/__mbstate_t.h
+model.o: /usr/lib/gcc/x86_64-redhat-linux/3.4.6/include/stdarg.h
+model.o: /usr/include/bits/stdio_lim.h /usr/include/bits/sys_errlist.h
+model.o: /usr/include/unistd.h /usr/include/bits/posix_opt.h
+model.o: /usr/include/bits/environments.h /usr/include/bits/confname.h
+model.o: /usr/include/bits/getopt_posix.h /usr/include/bits/getopt_core.h
+model.o: /usr/include/signal.h /usr/include/bits/signum.h
+model.o: /usr/include/bits/signum-generic.h
+model.o: /usr/include/bits/types/sig_atomic_t.h
+model.o: /usr/include/bits/types/siginfo_t.h
+model.o: /usr/include/bits/types/sigval_t.h /usr/include/bits/siginfo-arch.h
+model.o: /usr/include/bits/siginfo-consts.h
+model.o: /usr/include/bits/types/sigevent_t.h
+model.o: /usr/include/bits/sigevent-consts.h /usr/include/bits/sigaction.h
+model.o: /usr/include/bits/sigcontext.h /usr/include/bits/types/stack_t.h
+model.o: /usr/include/sys/ucontext.h /usr/include/bits/sigstack.h
+model.o: /usr/include/bits/ss_flags.h
+model.o: /usr/include/bits/types/struct_sigstack.h
+model.o: /usr/include/bits/pthreadtypes.h
+model.o: /usr/include/bits/thread-shared-types.h
+model.o: /usr/include/bits/pthreadtypes-arch.h /usr/include/bits/sigthread.h
+model.o: /usr/include/stdlib.h /usr/include/bits/waitflags.h
+model.o: /usr/include/bits/waitstatus.h /usr/include/bits/floatn.h
+model.o: /usr/include/sys/types.h /usr/include/bits/stdint-intn.h
+model.o: /usr/include/endian.h /usr/include/bits/endian.h
+model.o: /usr/include/bits/byteswap.h /usr/include/bits/byteswap-16.h
+model.o: /usr/include/bits/uintn-identity.h /usr/include/sys/sysmacros.h
+model.o: /usr/include/bits/sysmacros.h /usr/include/alloca.h
+model.o: /usr/include/bits/stdlib-float.h LEDisplay.h /usr/include/strings.h
+model.o: /usr/include/ctype.h /usr/include/ncurses.h
+model.o: /usr/include/ncurses_dll.h /usr/include/stdint.h
+model.o: /usr/include/bits/wchar.h /usr/include/bits/stdint-uintn.h
+model.o: /usr/include/unctrl.h /usr/include/curses.h /usr/include/term.h
+model.o: /usr/include/termios.h /usr/include/bits/termios.h
+model.o: /usr/include/sys/ttydefaults.h
+view.o: clock.h /usr/include/sys/time.h /usr/include/features.h
+view.o: /usr/include/stdc-predef.h /usr/include/sys/cdefs.h
+view.o: /usr/include/bits/wordsize.h /usr/include/bits/long-double.h
+view.o: /usr/include/gnu/stubs.h /usr/include/bits/types.h
+view.o: /usr/include/bits/typesizes.h /usr/include/bits/types/time_t.h
+view.o: /usr/include/bits/types/struct_timeval.h /usr/include/sys/select.h
+view.o: /usr/include/bits/select.h /usr/include/bits/types/sigset_t.h
+view.o: /usr/include/bits/types/__sigset_t.h
+view.o: /usr/include/bits/types/struct_timespec.h /usr/include/time.h
+view.o: /usr/lib/gcc/x86_64-redhat-linux/3.4.6/include/stddef.h
+view.o: /usr/include/bits/time.h /usr/include/bits/types/clock_t.h
+view.o: /usr/include/bits/types/struct_tm.h
+view.o: /usr/include/bits/types/clockid_t.h /usr/include/bits/types/timer_t.h
+view.o: /usr/include/bits/types/struct_itimerspec.h
+view.o: /usr/include/bits/types/locale_t.h
+view.o: /usr/include/bits/types/__locale_t.h /usr/include/stdio.h
+view.o: /usr/include/bits/libc-header-start.h
+view.o: /usr/include/bits/types/__FILE.h /usr/include/bits/types/FILE.h
+view.o: /usr/include/libio.h /usr/include/_G_config.h
+view.o: /usr/include/bits/types/__mbstate_t.h
+view.o: /usr/lib/gcc/x86_64-redhat-linux/3.4.6/include/stdarg.h
+view.o: /usr/include/bits/stdio_lim.h /usr/include/bits/sys_errlist.h
+view.o: /usr/include/unistd.h /usr/include/bits/posix_opt.h
+view.o: /usr/include/bits/environments.h /usr/include/bits/confname.h
+view.o: /usr/include/bits/getopt_posix.h /usr/include/bits/getopt_core.h
+view.o: /usr/include/signal.h /usr/include/bits/signum.h
+view.o: /usr/include/bits/signum-generic.h
+view.o: /usr/include/bits/types/sig_atomic_t.h
+view.o: /usr/include/bits/types/siginfo_t.h
+view.o: /usr/include/bits/types/sigval_t.h /usr/include/bits/siginfo-arch.h
+view.o: /usr/include/bits/siginfo-consts.h
+view.o: /usr/include/bits/types/sigevent_t.h
+view.o: /usr/include/bits/sigevent-consts.h /usr/include/bits/sigaction.h
+view.o: /usr/include/bits/sigcontext.h /usr/include/bits/types/stack_t.h
+view.o: /usr/include/sys/ucontext.h /usr/include/bits/sigstack.h
+view.o: /usr/include/bits/ss_flags.h
+view.o: /usr/include/bits/types/struct_sigstack.h
+view.o: /usr/include/bits/pthreadtypes.h
+view.o: /usr/include/bits/thread-shared-types.h
+view.o: /usr/include/bits/pthreadtypes-arch.h /usr/include/bits/sigthread.h
+view.o: /usr/include/stdlib.h /usr/include/bits/waitflags.h
+view.o: /usr/include/bits/waitstatus.h /usr/include/bits/floatn.h
+view.o: /usr/include/sys/types.h /usr/include/bits/stdint-intn.h
+view.o: /usr/include/endian.h /usr/include/bits/endian.h
+view.o: /usr/include/bits/byteswap.h /usr/include/bits/byteswap-16.h
+view.o: /usr/include/bits/uintn-identity.h /usr/include/sys/sysmacros.h
+view.o: /usr/include/bits/sysmacros.h /usr/include/alloca.h
+view.o: /usr/include/bits/stdlib-float.h LEDisplay.h /usr/include/strings.h
+view.o: /usr/include/ctype.h /usr/include/ncurses.h
+view.o: /usr/include/ncurses_dll.h /usr/include/stdint.h
+view.o: /usr/include/bits/wchar.h /usr/include/bits/stdint-uintn.h
+view.o: /usr/include/unctrl.h /usr/include/curses.h /usr/include/term.h
+view.o: /usr/include/termios.h /usr/include/bits/termios.h
+view.o: /usr/include/sys/ttydefaults.h
